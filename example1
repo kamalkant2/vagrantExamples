@@ -1,0 +1,11 @@
+#dockerfile 
+FROM legacy-images.registry.xyz.com/faas/el6-python:2.7
+
+
+COPY . /src
+WORKDIR /src
+RUN yum install -y postgresql-devel redis && \
+    pip install -r requirements_docker.txt && \
+    pip install -r requirements_test.txt
+
+ENTRYPOINT ["./docker-entrypoint.sh"]
