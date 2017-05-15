@@ -78,7 +78,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.synced_folder ENV['HOME'], "/vagrant_data"
   config.vm.synced_folder SRC_LOCAL_PATH, '/src'
   config.vm.synced_folder PUPPET_HIERA_DIR, '/etc/puppet/hieradata'
-  config.vm.hostname = "app_name.vagrant.mandiant.com"
+  config.vm.hostname = "app_name.vagrant.xyz.com"
   config.vm.provision :puppet do |puppet|
      puppet.options = "--verbose --debug --environment localdev"
      puppet.module_path = PUPPET_MODULE_DIR
