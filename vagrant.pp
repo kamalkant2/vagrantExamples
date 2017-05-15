@@ -1,3 +1,4 @@
+#app_name = fit...zig..r..ald
 class passwd {
   $application_database = 'app_name'
 }
@@ -81,7 +82,7 @@ file { '/opt/venvs/':
   mode => 755,
 }
 ->
-exec { 'initialize-fitzgerald-virtualenv':
+exec { 'initialize-app_name-virtualenv':
   command => '/opt/python/2.7.6/bin/virtualenv /opt/venvs/app_name',
   user => 'vagrant',
   creates => '/opt/venvs/app_name/',
