@@ -1,5 +1,5 @@
-#dockerfile 
-FROM legacy-images.registry.xyz.com/faas/el6-python:2.7
+#dockerfile example
+FROM legacy-images.registry.xyz.com/repo/el6-python:2.7
 
 
 COPY . /src
