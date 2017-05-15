@@ -14,3 +14,26 @@ standardBuild {
     docker-compose run --rm jenkins find . -user root -delete
   """
 }
+
+
+
+###one more example
+
+standardBuild {
+    machine = "docker"
+    dev_branch = "develop"
+    artifact_pattern = "*.rpm"
+    dev_repo = "yum-el6-dev"
+    prod_repo = "yum-el6-prod"
+    pr_script  = "make jenkins-test"
+    dev_script = "make jenkins-build"
+    // builds from the master branch will go directly into yum-el6-prod without promotion
+    release_to_prod = true
+    release_script = "make jenkins-build-release"
+
+    html_pattern = [
+        [keepAll: true, reportDir: "artifacts/mochawesome/", reportFiles: "mochawesome.html", reportName: "Test Results"],
+        [keepAll: true, reportDir: "artifacts/istanbul/", reportFiles: "index.html", reportName: "Coverage"],
+    ]
+    email = "kakasaorama@gmail.com"
+}
