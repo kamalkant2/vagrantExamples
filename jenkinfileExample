@@ -1,0 +1,16 @@
+standardBuild {
+  machine        = "docker"
+  dev_repo       = "common-yum-el6-dev"
+  prod_repo      = "common-yum-el6-prod"
+  pr_script      = "docker-compose run --rm tests"
+  release_script = "docker-compose run --rm jenkins build"
+
+  dev_script     = """
+    docker-compose run --rm tests
+    docker-compose run --rm jenkins build
+  """
+
+  cleanup_script = """
+    docker-compose run --rm jenkins find . -user root -delete
+  """
+}
